@@ -7,7 +7,6 @@ services:
     container_name: go_tw_stock_plugin
     env_file: .env
     volumes: 
-      - ./src:/go/src:rw
-      - ./pkg:/go/pkg:rw
       - ./twStockPlugin:/go/twStockPlugin:rw
+      - ./pkg:/go/pkg:rw
     tty: true

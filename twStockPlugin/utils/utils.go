@@ -1,4 +1,4 @@
-package twStockPlugin
+package utils
 
 // TODO 正規式判斷
 
