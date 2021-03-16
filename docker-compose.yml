@@ -9,4 +9,5 @@ services:
     volumes: 
       - ./src:/go/src:rw
       - ./pkg:/go/pkg:rw
+      - ./twStockPlugin:/go/twStockPlugin:rw
     tty: true
