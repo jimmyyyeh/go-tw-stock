@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  go:
+    build:
+      context: .
+    image: go_tw_stock_plugin
+    container_name: go_tw_stock_plugin
+    env_file: .env
+    volumes: 
+      - ./src:/go/src:rw
+      - ./pkg:/go/pkg:rw
+    tty: true
