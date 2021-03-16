@@ -1,11 +1,10 @@
 package utils
 
-// TODO 正規式判斷
-
 import (
 	"fmt"
 	"strconv"
 	"time"
+	"twStockPlugin/regex"
 )
 
 type DateUtils struct {
@@ -13,6 +12,9 @@ type DateUtils struct {
 
 func (d *DateUtils) RepublicEraToAc(republicEraStr string) string {
 	//民國轉西元
+	if !regex.RepublicEra.MatchString(republicEraStr) {
+		panic("Republic Era format error")
+	}
 	y_, m_, d_ := "", "", ""
 	if len(republicEraStr) == 7 {
 		y_, m_, d_ = republicEraStr[:3], republicEraStr[3:5], republicEraStr[5:]
@@ -25,9 +27,11 @@ func (d *DateUtils) RepublicEraToAc(republicEraStr string) string {
 	return acStr
 }
 
-
-func (d *DateUtils) AcToRepublicEra(acStr string) string{
+func (d *DateUtils) AcToRepublicEra(acStr string) string {
 	//西元轉民國
+	if !regex.AC.MatchString(acStr) {
+		panic("AC format error")
+	}
 	republicEra, _ := time.Parse("20060102", acStr)
 	y_ := strconv.Itoa(republicEra.Year() - 1911)
 	m_ := fmt.Sprintf("%02d", int(republicEra.Month()))
