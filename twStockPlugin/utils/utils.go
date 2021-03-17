@@ -1,9 +1,7 @@
 package utils
 
 import (
-	"fmt"
 	"strconv"
-	"time"
 	"twStockPlugin/regex"
 )
 
@@ -15,15 +13,26 @@ func (d *DateUtils) RepublicEraToAc(republicEraStr string) string {
 	if !regex.RepublicEra.MatchString(republicEraStr) {
 		panic("Republic Era format error")
 	}
-	y_, m_, d_ := "", "", ""
-	if len(republicEraStr) == 7 {
-		y_, m_, d_ = republicEraStr[:3], republicEraStr[3:5], republicEraStr[5:]
-	} else {
-		y_, m_, d_ = republicEraStr[:2], republicEraStr[2:4], republicEraStr[4:]
+	dateMap := map[string]string{}
+	keyMap := regex.RepublicEra.SubexpNames()[1:]
+	valueMap := regex.RepublicEra.FindStringSubmatch(republicEraStr)[1:]
+
+	for i, _ := range keyMap {
+		dateMap[keyMap[i]] = valueMap[i]
 	}
-	y__, _ := strconv.Atoi(y_)
-	y__ += 1911
-	acStr := fmt.Sprintf("%d%s%s", y__, m_, d_)
+
+	if dateMap["symbol1"] != dateMap["symbol2"] {
+		panic("Republic Era format error")
+	}
+
+	year_, _ := strconv.Atoi(dateMap["year"])
+	year_ = year_ + 1911
+	dateMap["year"] = strconv.Itoa(year_)
+
+	acStr := ""
+	for _, key := range []string{"year", "symbol1", "month", "symbol2", "day"} {
+		acStr += dateMap[key]
+	}
 	return acStr
 }
 
@@ -32,10 +41,25 @@ func (d *DateUtils) AcToRepublicEra(acStr string) string {
 	if !regex.AC.MatchString(acStr) {
 		panic("AC format error")
 	}
-	republicEra, _ := time.Parse("20060102", acStr)
-	y_ := strconv.Itoa(republicEra.Year() - 1911)
-	m_ := fmt.Sprintf("%02d", int(republicEra.Month()))
-	d_ := strconv.Itoa(republicEra.Day())
-	republicEraStr := y_ + m_ + d_
+	dateMap := map[string]string{}
+	keyMap := regex.AC.SubexpNames()[1:]
+	valueMap := regex.AC.FindStringSubmatch(acStr)[1:]
+
+	for i, _ := range keyMap {
+		dateMap[keyMap[i]] = valueMap[i]
+	}
+
+	if dateMap["symbol1"] != dateMap["symbol2"] {
+		panic("AC format error")
+	}
+
+	year_, _ := strconv.Atoi(dateMap["year"])
+	year_ = year_ - 1911
+	dateMap["year"] = strconv.Itoa(year_)
+
+	republicEraStr := ""
+	for _, key := range []string{"year", "symbol1", "month", "symbol2", "day"} {
+		republicEraStr += dateMap[key]
+	}
 	return republicEraStr
 }
