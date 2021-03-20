@@ -1,5 +1,7 @@
 package constant
 
+var TwseDomain = "https://www.twse.com.tw"
+var TpexDomain = "https://www.tpex.org.tw"
 var DtsTwseDomain = "https://dts.twse.com.tw"
 
 var ListedCategory = map[string]int{
