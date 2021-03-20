@@ -5,6 +5,7 @@ import (
 	"time"
 	"twStockPlugin/stockInfo"
 	"twStockPlugin/stockInstitutionalInvestors"
+	"twStockPlugin/stockMarginTrading"
 	"twStockPlugin/stockTrading"
 	"twStockPlugin/utils"
 )
@@ -34,4 +35,10 @@ func main () {
 	stockInstitutionalInvestors_ := stockInstitutionalInvestors.Fetch(date_)
 	fmt.Println(stockInstitutionalInvestors_["2353"])
 	fmt.Println(stockInstitutionalInvestors_["3540"])
+
+	// testing fetch stock margin trading
+	time.Sleep(3 * time.Second)
+	stockMarginTrading_ := stockMarginTrading.Fetch(date_)
+	fmt.Println(stockMarginTrading_["0057"])
+	fmt.Println(stockMarginTrading_["3202"])
 }

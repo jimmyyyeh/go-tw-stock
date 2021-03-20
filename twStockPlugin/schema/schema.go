@@ -44,3 +44,21 @@ type StockInstitutionalInvestors struct {
 	DealersHedgeSell          float64 `json:"dealers_hedge_sell"`           // 自營商賣出(避險)
 	Total                     float64 `json:"total"`                        // 總計
 }
+
+type StockMarginTrading struct {
+	Code                       string  `json:"code"`                          // 股票代碼
+	MarginPurchase             float64 `json:"margin_purchase"`               // 融資買進
+	MarginSale                 float64 `json:"margin_sale"`                   // 融資賣出
+	CashRedemption             float64 `json:"cash_redemption"`               // 現金償還
+	MarginBalanceOfPreviousDay float64 `json:"balance_of_previous_day"`       // 融資昨日償還
+	MarginBalanceOfTheDay      float64 `json:"margin_balance_of_theDay"`      // 融資今日償還
+	MarginQuota                float64 `json:"margin_quota"`                  // 融資限額
+	ShortCovering              float64 `json:"short_covering"`                // 融券買進
+	ShortSale                  float64 `json:"short_sale"`                    // 融券賣出
+	StockRedemption            float64 `json:"stock_redemption"`              // 現券償還
+	ShortBalanceOfPreviousDay  float64 `json:"short_balance_of_previous_day"` // 融券昨日償還
+	ShortBalanceOfTheDay       float64 `json:"short_balance_of_theDay"`       // 融券今日償還
+	ShortQuota                 float64 `json:"short_quota"`                   // 融券限額
+	OffSetting                 float64 `json:"off_setting"`                   // 資券互抵
+	Note                       string  `json:"note"`                          // 備註
+}
