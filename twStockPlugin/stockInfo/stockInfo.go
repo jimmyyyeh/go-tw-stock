@@ -11,7 +11,7 @@ import (
 )
 
 var csvMap = map[string]string{
-	"上市": "",
+	"上市": "t187ap03_L.csv",
 	"上櫃": "t187ap03_O.csv",
 }
 
@@ -31,10 +31,9 @@ func getReverseCategoryMap(originMap map[string]int) map[int]string {
 	return reversedMap
 }
 
-func Fetch() map[string]schema.StockInfo {
+func Fetch() map[string]*schema.StockInfo {
 	csvUtils := utils.CsvUtils{}
-	results := map[string]schema.StockInfo{}
-
+	results :=  map[string]*schema.StockInfo{}
 	for type_, csv := range csvMap {
 		reversedCategoryMap := getReverseCategoryMap(categoryConstMap[type_])
 		url := fmt.Sprintf("%s/opendata/%s", constant.DtsTwseDomain, csv)
@@ -63,7 +62,7 @@ func Fetch() map[string]schema.StockInfo {
 				PrivateStockShares: privateStockShares,
 				PreferredShares:    preferredShares,
 			}
-			results[stockInfo.Code] = *stockInfo
+			results[stockInfo.Code] = stockInfo
 		}
 	}
 	return results
