@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 	"twStockPlugin/stockInfo"
+	"twStockPlugin/stockInstitutionalInvestors"
 	"twStockPlugin/stockTrading"
 	"twStockPlugin/utils"
 )
@@ -20,11 +21,17 @@ func main () {
 
 	// testing fetch stock info
 	stockInfo_ := stockInfo.Fetch()
-	fmt.Println(stockInfo_["1101"])
+	fmt.Println(stockInfo_["2330"])
 
 	// testing fetch stock trading
 	date_ := time.Date(2021, 3, 15, 0, 0, 0, 0, time.UTC)
 	stockTrading_ := stockTrading.Fetch(date_)
 	fmt.Println(stockTrading_["1101"])
 	fmt.Println(stockTrading_["9962"])
+
+	time.Sleep(3 * time.Second)
+	// testing fetch stock institutional investors
+	stockInstitutionalInvestors_ := stockInstitutionalInvestors.Fetch(date_)
+	fmt.Println(stockInstitutionalInvestors_["2353"])
+	fmt.Println(stockInstitutionalInvestors_["3540"])
 }

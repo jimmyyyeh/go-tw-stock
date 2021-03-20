@@ -29,3 +29,18 @@ type StockTrading struct {
 	Close       float64 `json:"close"`        // 收盤價
 	Change      float64 `json:"change"`       // 漲跌價差
 }
+
+type StockInstitutionalInvestors struct {
+	Code                      string  `json:"code"`                         // 股票代碼
+	ForeignDealersExcludeBuy  float64 `json:"foreign_dealers_exclude_buy"`  // 外資買進(不含自營商)
+	ForeignDealersExcludeSell float64 `json:"foreign_dealers_exclude_sell"` // 外資賣出(不含自營商)
+	ForeignDealersBuy         float64 `json:"foreign_buy"`                  // 外資買進(含自營商)
+	ForeignDealersSell        float64 `json:"foreign_sell"`                 // 外資賣出(含自營商)
+	TrustBuy                  float64 `json:"trust_buy"`                    // 投信買進
+	TrustSell                 float64 `json:"trust_sell"`                   // 投信賣出
+	DealersProprietaryBuy     float64 `json:"dealers_proprietary_buy"`      // 自營商買進
+	DealersProprietarySell    float64 `json:"dealers_proprietary_sell"`     // 自營商賣出
+	DealersHedgeBuy           float64 `json:"dealers_hedge_buy"`            // 自營商買進(避險)
+	DealersHedgeSell          float64 `json:"dealers_hedge_sell"`           // 自營商賣出(避險)
+	Total                     float64 `json:"total"`                        // 總計
+}
