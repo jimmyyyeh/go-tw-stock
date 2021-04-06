@@ -2,7 +2,7 @@ package utils
 
 import (
 	"strconv"
-	"twStockPlugin/regex"
+	"goTwStock/regex"
 )
 
 type DateUtils struct {

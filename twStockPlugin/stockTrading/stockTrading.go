@@ -6,10 +6,10 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"twStockPlugin/constant"
-	"twStockPlugin/regex"
-	"twStockPlugin/schema"
-	"twStockPlugin/utils"
+	"goTwStock/constant"
+	"goTwStock/regex"
+	"goTwStock/schema"
+	"goTwStock/utils"
 )
 
 var requestHandler = utils.RequestHandler{}

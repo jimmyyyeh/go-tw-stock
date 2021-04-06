@@ -3,10 +3,10 @@ services:
   go:
     build:
       context: .
-    image: go_tw_stock_plugin
-    container_name: go_tw_stock_plugin
+    image: go_tw_stock
+    container_name: go_tw_stock
     env_file: .env
     volumes: 
-      - ./twStockPlugin:/go/twStockPlugin:rw
+      - ./goTwStock:/go/goTwStock:rw
       - ./pkg:/go/pkg:rw
     tty: true

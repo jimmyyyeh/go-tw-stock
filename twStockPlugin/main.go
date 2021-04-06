@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"time"
-	"twStockPlugin/stockInfo"
-	"twStockPlugin/stockInstitutionalInvestors"
-	"twStockPlugin/stockMarginTrading"
-	"twStockPlugin/stockTrading"
-	"twStockPlugin/utils"
+	"goTwStock/stockInfo"
+	"goTwStock/stockInstitutionalInvestors"
+	"goTwStock/stockMarginTrading"
+	"goTwStock/stockTrading"
+	"goTwStock/utils"
 )
 
 func main () {

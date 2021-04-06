@@ -1,1 +1,1 @@
-# go-tw-stock-plugin
+# go-tw-stock
